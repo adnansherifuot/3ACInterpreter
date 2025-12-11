@@ -52,13 +52,14 @@ sudo apt-get install python3-tk
     ├── vm.py
     ├── instruction.py
     ├── stack_frame.py
-    ├── main.py  (or your main application script)
+    ├── interpreter.py  (or your main application script)
     └── 3AC Syntax for interpreter.txt
     ```
 
 3.  **Run the Application**:
     Execute the main script from your terminal to launch the interpreter's GUI.
     ```bash
-    python main.py
+    python interpreter.py
     ```
+
     *(Note: The entry point script might have a different name, like `app.py` or `gui.py`. Please replace `main.py` with the correct filename.)*
