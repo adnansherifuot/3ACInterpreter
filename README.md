@@ -40,7 +40,7 @@ sudo apt-get install python3-tk
 1.  **Clone or Download the Project**:
     Get the project files onto your local machine. If you are using Git, you can clone the repository:
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/adnansherifuot/3ACInterpreter
     cd 3ACInterpreter
     ```
     Otherwise, download and extract the source code into a directory named `3ACInterpreter`.
@@ -63,3 +63,4 @@ sudo apt-get install python3-tk
     ```
 
     *(Note: The entry point script might have a different name, like `app.py` or `gui.py`. Please replace `main.py` with the correct filename.)*
+
