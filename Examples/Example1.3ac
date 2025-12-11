@@ -1,0 +1,24 @@
+# --- Example 1: Simple Function Call ---
+# Calls a function to add two numbers and prints the result.
+# Expected output: Output: 15
+
+# Push parameters for the function call
+PARAM 5
+PARAM 10
+
+# Call the function 'add_two' which takes 2 parameters.
+# Store the return value in the variable 'sum_result'.
+CALL add_two, 2, sum_result
+
+# Print the result
+PRINT sum_result
+HALT
+
+# --- Function Definition ---
+add_two:
+    # The VM automatically assigns parameters to ARG0, ARG1, etc.
+    # Add the two parameters and store in a local variable 'result'.
+    ADD result, ARG0, ARG1
+    
+    # Return the value stored in 'result'.
+    RETURN result

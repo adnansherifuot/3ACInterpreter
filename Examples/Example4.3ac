@@ -1,0 +1,37 @@
+# --- Example 4: Recursive Function (Factorial) ---
+# Calculates the factorial of 5 using recursion.
+# Expected output: Output: 120
+
+# Calculate factorial of 5.
+PARAM 5
+CALL factorial, 1, fact_result
+PRINT fact_result
+HALT
+
+# --- Function Definition ---
+factorial:
+    # ARG0 is the number 'n' for which we calculate n!
+
+    # Base case: if n <= 1, return 1.
+    LE is_base_case, ARG0, 1
+    JUMPT base_case, is_base_case
+
+    # Recursive step: return n * factorial(n-1)
+    # Calculate n-1
+    SUB n_minus_1, ARG0, 1
+    
+    # Push parameter for the recursive call
+    PARAM n_minus_1
+    
+    # Call factorial(n-1) and store result in 'rec_result'
+    CALL factorial, 1, rec_result
+    
+    # Calculate n * rec_result
+    MUL final_result, ARG0, rec_result
+    
+    # Return the final result
+    RETURN final_result
+
+base_case:
+    # Return 1 for the base case
+    RETURN 1

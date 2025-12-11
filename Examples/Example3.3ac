@@ -1,0 +1,31 @@
+# --- Example 3: Pass-by-Reference ---
+# A function 'increment' modifies the caller's variable directly.
+# Expected output: Output: 11
+
+# Initialize a variable 'x' in the global scope.
+CONST_ASSIGN x, 10
+
+# Pass the address of 'x' as a reference parameter.
+REF_PARAM x
+
+# Call the 'increment' function. It takes 1 parameter and returns nothing.
+CALL increment, 1, null
+
+# Print the value of 'x' after the function call to see if it changed.
+PRINT x
+HALT
+
+# --- Function Definition ---
+increment:
+    # ARG0 now holds the heap address of the original 'x' variable.
+    # Load the value from that address into a temporary local 'current_val'.
+    DEREF_LOAD current_val, ARG0
+    
+    # Add 1 to the value.
+    ADD new_val, current_val, 1
+    
+    # Store the new value back into the original variable's address.
+    DEREF_STORE ARG0, new_val
+    
+    # Return nothing.
+    RETURN

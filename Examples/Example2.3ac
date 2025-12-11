@@ -1,0 +1,23 @@
+# --- Example 2: Pointers and Heap (Array Simulation) ---
+# Allocates a 3-slot array on the heap, stores values,
+# and prints the value at index 1.
+# Expected output: Output: 200
+
+# Allocate 3 contiguous memory cells on the heap.
+# The starting address (pointer) is stored in 'my_array'.
+ALLOC_HEAP my_array, 3
+
+# Store values in the array using the base pointer and an index.
+# my_array[0] = 100
+INDEX_STORE my_array, 0, 100
+# my_array[1] = 200
+INDEX_STORE my_array, 1, 200
+# my_array[2] = 300
+INDEX_STORE my_array, 2, 300
+
+# Load the value from my_array[1] into the variable 'val'.
+INDEX_LOAD val, my_array, 1
+
+# Print the retrieved value.
+PRINT val
+HALT

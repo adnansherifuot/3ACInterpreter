@@ -1,0 +1,50 @@
+# --- Example5: Passing an Array by Reference ---
+# This program allocates an array on the heap, passes its pointer to a
+# function, and lets the function modify an element.
+# Expected output:
+# Output: 100
+# Output: 555
+
+# 1. Allocate a 3-slot array on the heap. The pointer (base address) is stored in 'my_array'.
+ALLOC_HEAP my_array, 3
+
+# 2. Store an initial value of 100 at index 1 of the array.
+INDEX_STORE my_array, 1, 100
+
+# 3. Load and print the initial value to confirm it's set.
+INDEX_LOAD initial_val, my_array, 1
+PRINT initial_val
+
+# 4. Prepare to call the 'modify_array_element' function.
+#    - Pass the array pointer itself.
+#    - Pass the index we want to modify (1).
+#    - Pass the new value we want to store (555).
+PARAM my_array
+PARAM 1
+PARAM 555
+
+# 5. Call the function. It takes 3 arguments and doesn't need to return anything.
+CALL modify_array_element, 3, null
+
+# 6. After the function returns, load the value from the same index again.
+INDEX_LOAD final_val, my_array, 1
+
+# 7. Print the final value. If the function worked, this will be 555.
+PRINT final_val
+
+HALT
+
+# --- Function Definition ---
+# This function takes a pointer, an index, and a new value.
+# It modifies the array on the heap directly.
+modify_array_element:
+    # ARG0 now holds the pointer to the array (the base address).
+    # ARG1 now holds the index to modify.
+    # ARG2 now holds the new value to store.
+    
+    # Use the passed-in arguments to modify the heap.
+    # This is equivalent to: heap[base_address + index] = new_value
+    INDEX_STORE ARG0, ARG1, ARG2
+    
+    # Return to the caller.
+    RETURN
